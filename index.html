@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="ie=edge"
+		/>
+		<link
+			rel="stylesheet"
+			href="./style.css"
+		/>
+		<title>Password Generator</title>
+	</head>
+	<body>
+		<section class="container">
+			<h1>Password Generator</h1>
+			<section class="box">
+				<section class="result_box">
+					<input
+						type="text"
+						placeholder="xF3&bY7$"
+						disabled
+					/>
+					<svg class="copy">
+						<use
+							xlink:href="assets/images/icon-copy.svg#copy"
+						></use>
+					</svg>
+				</section>
+				<section class="options_box">
+					<div class="char">
+						<strong
+							>Character Length</strong
+						>
+						<p class="char_value">10</p>
+					</div>
+					<input
+						type="range"
+						min="0"
+						max="20"
+						value="10"
+						name="range"
+						id="range"
+					/>
+					<div class="options">
+						<div>
+							<input
+								type="checkbox"
+								name="upper"
+								id="upper"
+							/>
+							<label for="upper"
+								>Imclude Uppercase
+								Letters</label
+							>
+						</div>
+						<div>
+							<input
+								type="checkbox"
+								name="lower"
+								id="lower"
+							/>
+							<label for="lower"
+								>Imclude Lowercase
+								Letters</label
+							>
+						</div>
+						<div>
+							<input
+								type="checkbox"
+								name="number"
+								id="number"
+							/>
+							<label for="number"
+								>Imclude Numbers</label
+							>
+						</div>
+						<div>
+							<input
+								type="checkbox"
+								name="symbol"
+								id="symbol"
+							/>
+							<label for="symbol"
+								>Imclude Symbols</label
+							>
+						</div>
+					</div>
+					<div class="strength-box">
+						<p>STRENGTH</p>
+						<div class="strengths">
+							<p class="str"></p>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+					<button id="generate-btn"
+						>GENERATE
+						<svg class="arrow">
+							<use
+								xlink:href="assets/images/icon-arrow-right.svg#arrow-right"
+							></use>
+						</svg>
+					</button>
+				</section>
+			</section>
+		</section>
+		<script src="./script.js"></script>
+	</body>
+</html>

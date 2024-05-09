@@ -84,6 +84,24 @@ body {
 	background: transparent;
 	font-weight: bolder;
 	width: 90%;
+	color: var(--off-white);
+}
+
+.copy-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.copy-box p {
+	color: var(--light-green);
+	font-size: 1.1em;
+	font-weight: bolder;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-100%);
+	transition: all 0.3s;
 }
 
 .copy {
@@ -136,20 +154,21 @@ body {
 	appearance: none;
 	-webkit-appearance: none;
 	width: 100%;
-	height: 0px;
-	background: var(--light-green);
+	height: 10px;
+	background-color: var(
+		--very-dark-grey
+	);
+	background-image: linear-gradient(
+		var(--light-green),
+		var(--light-green)
+	);
+	border-radius: 2px;
+	background-size: 50% 100%;
+	background-repeat: no-repeat;
 	border: none;
 	outline: none;
 	display: block;
 	margin-top: 14px;
-}
-
-#range::-webkit-slider-runnable-track {
-	background: var(--light-green);
-	border-radius: 2px;
-	height: 10px;
-	appearance: none;
-	-webkit-appearance: none;
 }
 
 #range::-webkit-slider-thumb {
@@ -159,7 +178,7 @@ body {
 	height: 32px;
 	background-color: var(--off-white);
 	border-radius: 50%;
-	margin-top: -12px;
+	margin-top: -6px;
 }
 
 .options {
@@ -230,25 +249,49 @@ body {
 	color: var(--grey);
 }
 
-.strength-box .strengths {
+.strength-box #strengths {
 	display: flex;
 	justify-content: start;
 	align-items: center;
 	flex-direction: row;
 	gap: 5px;
-	margin-start: auto;
+	-webkit-margin-start: auto;
 }
 
-.strengths .str {
+#strengths p {
 	color: var(--off-white);
-	font-size: 1em;
+	font-size: 1.05em;
+	margin-right: 8px;
 }
 
-.strengths div {
+#strengths div {
 	height: 2.1em;
 	width: 0.7em;
 	border: 2px solid var(--off-white);
 	background: transparent;
+}
+
+#strengths.too_weak div:nth-child(2) {
+	background: var(--red);
+	border-color: var(--red);
+}
+
+#strengths.weak div:nth-child(2),
+#strengths.weak div:nth-child(3) {
+	background: var(--orange);
+	border-color: var(--orange);
+}
+
+#strengths.medium div:nth-child(2),
+#strengths.medium div:nth-child(3),
+#strengths.medium div:nth-child(4) {
+	background: var(--yellow);
+	border-color: var(--yellow);
+}
+
+#strengths.strong div {
+	background: var(--light-green);
+	border-color: var(--light-green);
 }
 
 #generate-btn {

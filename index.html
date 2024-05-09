@@ -27,11 +27,14 @@
 						id="output"
 						disabled
 					/>
-					<svg class="copy">
-						<use
-							xlink:href="assets/images/icon-copy.svg#copy"
-						></use>
-					</svg>
+					<div class="copy-box">
+						<p>COPIED!</p>
+						<svg class="copy">
+							<use
+								xlink:href="assets/images/icon-copy.svg#copy"
+							></use>
+						</svg>
+					</div>
 				</section>
 				<section class="options_box">
 					<div class="char">
@@ -54,6 +57,7 @@
 								type="checkbox"
 								name="upper"
 								id="upper"
+								checked
 							/>
 							<label for="upper"
 								>Imclude Uppercase
@@ -86,6 +90,7 @@
 								type="checkbox"
 								name="symbol"
 								id="symbol"
+								checked
 							/>
 							<label for="symbol"
 								>Imclude Symbols</label
@@ -94,8 +99,8 @@
 					</div>
 					<div class="strength-box">
 						<p>STRENGTH</p>
-						<div class="strengths">
-							<p class="str"></p>
+						<div id="strengths">
+							<p></p>
 							<div></div>
 							<div></div>
 							<div></div>

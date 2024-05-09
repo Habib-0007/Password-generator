@@ -1,7 +1,15 @@
 var outputElement =
 	document.querySelector("#ouput");
+var copyBtn =
+	document.querySelector(".copy");
+var copied = document.querySelector(
+	".copy-box p"
+);
 var range =
 	document.querySelector("#range");
+var charLength = document.querySelector(
+	".char_value"
+);
 var lowerCheckbox =
 	document.querySelector("#lower");
 var upperCheckbox =
@@ -14,11 +22,23 @@ var generateBtn =
 	document.querySelector(
 		"#generate-btn"
 	);
-
+var strengths = document.querySelector(
+	"#strengths"
+);
+var strengthValue =
+	strengths.querySelector("p");
 var length = 10;
 
 range.addEventListener("input", () => {
 	length = range.value;
+
+	const value =
+		((range.value - range.min) /
+			(range.max - range.min)) *
+		100;
+	range.style.backgroundSize =
+		value + "%";
+	charLength.textContent = range.value;
 });
 
 function generatePassword() {
@@ -33,6 +53,33 @@ function generatePassword() {
 		number,
 		symbol
 	);
+
+	if (length > 0 && length <= 6) {
+		strengths.className = "";
+		strengths.classList.add("too_weak");
+		strengthValue.textContent = "TOO WEAK"
+	} else if (
+		length > 6 &&
+		length <= 8
+	) {
+		strengths.className = "";
+		strengths.classList.add("weak");
+		strengthValue.textContent = "WEAK"
+	} else if (
+		length > 9 &&
+		length <= 10
+	) {
+		strengths.className = "";
+		strengths.classList.add("medium");
+		strengthValue.textContent = "MEDIUM"
+	} else if (
+		length > 10 &&
+		length <= 20
+	) {
+		strengths.className = "";
+		strengths.classList.add("strong");
+		strengthValue.textContent = "STRONG"
+	}
 }
 
 const randomLowercase = () => {
@@ -121,7 +168,41 @@ const getPassword = (
 	return password.slice(0, length);
 };
 
+generatePassword();
+
+async function copyTextToClipboard() {
+	var text = output.value;
+	try {
+		await navigator.clipboard.writeText(
+			text
+		);
+		setTimeout(() => {
+			copied.style.opacity = "1";
+			copied.style.visibility =
+				"visible";
+			copied.style.transform =
+				"translateY(0)";
+			setTimeout(() => {
+				copied.style.opacity = "0";
+				copied.style.visibility =
+					"hidden";
+				copied.style.transform =
+					"translateY(-100%)";
+			}, 2000);
+		}, 200);
+	} catch (error) {
+		console.error(
+			"Error copying text to clipboard",
+			error
+		);
+	}
+}
+
 generateBtn.addEventListener(
 	"click",
 	generatePassword
+);
+copyBtn.addEventListener(
+	"click",
+	copyTextToClipboard
 );
